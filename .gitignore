@@ -1,0 +1,9 @@
+*.sln
+*.sdf
+*.vcxproj
+*.filters
+*.user
+Debug/
+ipch/
+*.opensdf
+*.suo
