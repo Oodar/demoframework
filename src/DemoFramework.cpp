@@ -32,7 +32,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,
 	CGameWindow myWindow( hInstance, "DemoFramework" );
 
 	MyGame myGame;
-
 	myWindow.startGame( &myGame, myWindow.getWindowHandle() );
 
 }

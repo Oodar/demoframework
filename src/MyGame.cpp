@@ -65,10 +65,12 @@ void MyGame::render()
 	}
 
 	float time = testTimer.lap();
+	float fps = 1.0f / time;
 
 	std::stringstream frameTime;
 	frameTime.str("");
-	frameTime << "Frame time: " << time;
+	frameTime << "Frame time: " << time << std::endl;
+	frameTime << "FPS: " << fps;
 
 
 	RECT windowRect;
