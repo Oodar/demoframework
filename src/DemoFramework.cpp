@@ -3,6 +3,9 @@
 #include <io.h>		// For console
 #include <Windows.h>
 
+#include "CGameWindow.h"
+#include "MyGame.h"
+
 void StartConsole()
 {
     AllocConsole();
@@ -26,5 +29,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,
 	#endif
 
 	StartConsole();
+	CGameWindow myWindow( hInstance, "DemoFramework" );
+
+	MyGame myGame;
+
+	myWindow.startGame( &myGame, myWindow.getWindowHandle() );
 
 }
