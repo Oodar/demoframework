@@ -1,9 +1,10 @@
+ipch/
+Debug/
 *.sln
 *.sdf
 *.vcxproj
 *.filters
 *.user
-Debug/
-ipch/
 *.opensdf
 *.suo
+.gitignore~
