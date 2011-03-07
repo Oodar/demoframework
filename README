@@ -1,0 +1,4 @@
+Current tasks on 'dev' branch:
+
+- CGraphicsStats should be a Singleton class
+- Handle input using Raw input (as recommended by MS) for Keyboard/Mouse
