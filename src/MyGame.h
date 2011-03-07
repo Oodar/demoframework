@@ -1,9 +1,10 @@
 #pragma once
 
+#include <d3dx9.h>
+
 #include "IGame.h"
 #include "Util.h"
-#include "CTimer.h"
-#include <d3dx9.h>
+#include "CGraphicsStats.h"
 
 class MyGame: public IGame
 {
@@ -20,6 +21,6 @@ class MyGame: public IGame
 	void onLostDevice();
 	void onResetDevice();
 
-	CTimer testTimer;
+	CGraphicsStats m_stats;
 
 };

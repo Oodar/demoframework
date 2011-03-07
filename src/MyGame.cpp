@@ -51,8 +51,8 @@ void MyGame::initGame( LPDIRECT3DDEVICE9 pDevice, HWND hWnd )
 	// Derp
 	setupFontInterface();
 
-	// Testing out CTimer
-	testTimer.startTiming();
+	// Testing out CGraphicsStats
+	m_stats.startTiming(); // Kick off frame rate timer
 
 
 }
@@ -64,22 +64,22 @@ void MyGame::render()
 		LogMessage( "GAME", "m_pDevice->Clear failed!");
 	}
 
-	float time = testTimer.lap();
-	float fps = 1.0f / time;
+	m_stats.updateFrameRate();
 
-	std::stringstream frameTime;
-	frameTime.str("");
-	frameTime << "Frame time: " << time << std::endl;
-	frameTime << "FPS: " << fps;
+	RECT statsRect, windowRect;
 
-
-	RECT windowRect;
 	GetClientRect( m_hGameWindow, &windowRect );
 
+	int width = windowRect.right - windowRect.left;
+	int height = windowRect.bottom - windowRect.top;
+
+	statsRect.top = 10;
+	statsRect.left = 10;
+	statsRect.right = width / 2;
+	statsRect.bottom = height / 2;
+
 	m_pDevice->BeginScene();
-		m_pFont->DrawText( 0, frameTime.str().c_str(), -1,
-							&windowRect, DT_CENTER | DT_VCENTER,
-							D3DCOLOR_XRGB( rand() % 256, rand() % 256, rand() % 256 ) );
+		m_stats.render( m_pFont, &statsRect );
 	m_pDevice->EndScene();
 	m_pDevice->Present( 0, 0, 0, 0 );
 
