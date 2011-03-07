@@ -61,12 +61,45 @@ void CInput::Update( LPARAM lParam )
 		RAWINPUT* rawInput = (RAWINPUT*) m_pInputBuffer;
 
 		if( rawInput->header.dwType == RIM_TYPEMOUSE )
-			// read mouse data
+			readMouseData( rawInput );
 
 		if( rawInput->header.dwType == RIM_TYPEKEYBOARD )
-			// read keyboard data
+			readKeyboardData( rawInput );
 
 	}
 
 	
+}
+
+void CInput::readMouseData( RAWINPUT* rawInput )
+{
+
+}
+
+void CInput::readKeyboardData( RAWINPUT* rawInput )
+{
+	USHORT keyCode = rawInput->data.keyboard.VKey;
+	bool keyUp = rawInput->data.keyboard.Flags & RI_KEY_BREAK;
+
+	std::stringstream keyCodeStr;
+	keyCodeStr.str("");
+
+
+	if( keyUp )
+	{
+		keyCodeStr << "You released: " << keyCode;
+		
+		// Erase released key from set
+		m_setCurrPressed.erase( m_setCurrPressed.find( keyCode ));
+
+	}
+	else
+	{
+		keyCodeStr << "You pressed: " << keyCode;
+
+		// Insert pressed key into set
+		m_setCurrPressed.insert( keyCode );
+	}
+
+	LogMessage( "INPUT", keyCodeStr.str() );
 }
