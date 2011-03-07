@@ -2,3 +2,6 @@ Current tasks on 'dev' branch:
 
 - CGraphicsStats should be a Singleton class
 - Handle input using Raw input (as recommended by MS) for Keyboard/Mouse
+	Add mapping of virtual key codes to ascii (ToAsciiEx).
+	Will be needed in the future should text entry be required
+	
