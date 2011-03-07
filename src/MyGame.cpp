@@ -15,14 +15,14 @@ void MyGame::setupFontInterface()
 
 		// Fill out D3DXFONT_DESC:
 		D3DXFONT_DESC fontDesc;
-		fontDesc.Height = 20;
-		fontDesc.Width = 10;
+		fontDesc.Height = 14;
+		fontDesc.Width = 0;
 		fontDesc.Weight = FW_NORMAL;
 		fontDesc.MipLevels = 0;
 		fontDesc.Italic = false;
 		fontDesc.CharSet = DEFAULT_CHARSET;
 		fontDesc.OutputPrecision = OUT_DEFAULT_PRECIS;
-		fontDesc.Quality = DEFAULT_QUALITY;
+		fontDesc.Quality = CLEARTYPE_QUALITY;
 		fontDesc.PitchAndFamily = DEFAULT_PITCH | FF_DONTCARE;
 		// Copy TCHAR into fontDesc.FaceName
 		_tcscpy( fontDesc.FaceName, _T("Consolas") );

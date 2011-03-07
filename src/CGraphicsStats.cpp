@@ -41,6 +41,6 @@ void CGraphicsStats::render( LPD3DXFONT pFont, RECT* textArea )
 	m_strGraphicsStats << "Num tris: " << m_nNumTris << std::endl;
 	
 	pFont->DrawText( 0, m_strGraphicsStats.str().c_str(), -1,
-					textArea, DT_LEFT | DT_VCENTER,
+					textArea, DT_LEFT | DT_TOP,
 					D3DCOLOR_XRGB( 0, 0, 0 ) );
 }
