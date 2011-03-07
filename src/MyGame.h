@@ -3,6 +3,7 @@
 #include <d3dx9.h>
 
 #include "IGame.h"
+#include "CInput.h"
 #include "Util.h"
 #include "CGraphicsStats.h"
 
@@ -21,6 +22,6 @@ class MyGame: public IGame
 	void onLostDevice();
 	void onResetDevice();
 
-	CGraphicsStats m_stats;
+	CGraphicsStats	m_stats;
 
 };

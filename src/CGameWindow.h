@@ -6,6 +6,7 @@
 
 #include "Util.h"
 #include "IGame.h"
+#include "CInput.h"
 
 class CGameWindow
 {
@@ -42,6 +43,7 @@ protected:
 	LPDIRECT3DDEVICE9		m_pDevice;
 	D3DPRESENT_PARAMETERS	m_pPP;
 	IGame*					m_pRunningGame;
+	CInput					m_input;
 
 	bool			m_bPaused;
 

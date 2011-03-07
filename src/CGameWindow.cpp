@@ -15,10 +15,16 @@ CGameWindow::CGameWindow( HINSTANCE hInstance, std::string windowCaption )
 
 LRESULT CGameWindow::MsgProc( UINT msg, WPARAM wParam, LPARAM lParam )
 {
-
+	std::stringstream inputstr;
 	// Handle WM messages properly here, passed through from StaticMsgProc:
 	switch( msg )
 	{
+	case WM_INPUT:
+
+		// Process raw input here
+		m_input.Update( lParam );
+		break;
+
 	case WM_CREATE:
 		break;
 
