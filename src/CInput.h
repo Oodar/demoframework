@@ -10,6 +10,7 @@ class CInput
 public:
 
 	CInput::CInput();
+	CInput::~CInput();
 
 	void Update( LPARAM lParam );
 

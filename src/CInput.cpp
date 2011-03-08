@@ -26,6 +26,11 @@ CInput::CInput()
 
 }
 
+CInput::~CInput()
+{
+	delete m_pInputBuffer;
+}
+
 void CInput::registerDevices()
 {
 	LogMessage( "INPUT", "Registering raw input devices..." );
@@ -67,8 +72,6 @@ void CInput::Update( LPARAM lParam )
 			readKeyboardData( rawInput );
 
 	}
-
-	
 }
 
 void CInput::readMouseData( RAWINPUT* rawInput )
