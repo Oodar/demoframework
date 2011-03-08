@@ -13,6 +13,12 @@ CGameWindow::CGameWindow( HINSTANCE hInstance, std::string windowCaption )
 
 }
 
+CGameWindow::~CGameWindow()
+{
+	if( m_pDevice )
+		m_pDevice->Release();
+}
+
 LRESULT CGameWindow::MsgProc( UINT msg, WPARAM wParam, LPARAM lParam )
 {
 	std::stringstream inputstr;

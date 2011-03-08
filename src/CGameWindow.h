@@ -14,6 +14,7 @@ class CGameWindow
 public:
 	// Constructor	
 	CGameWindow( HINSTANCE hInstance, std::string windowCaption );
+	~CGameWindow();
 
 	// Getters
 	HINSTANCE getInstanceHandle(); // Return instance handle
