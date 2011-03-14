@@ -2,9 +2,13 @@
 #include <fcntl.h>	// For console
 #include <io.h>		// For console
 #include <Windows.h>
+#include <fstream>
 
 #include "CGameWindow.h"
 #include "MyGame.h"
+
+// Turn this off to log to console
+// #define LOGTOFILE
 
 void StartConsole()
 {
@@ -18,7 +22,6 @@ void StartConsole()
     int   i = setvbuf( stdout, NULL, _IONBF, 0 );
 }
 
-
 // Windows entry point
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,
 				   PSTR cmdLine, int showCmd)
@@ -28,7 +31,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,
 		_CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
 	#endif
 
-	StartConsole();
+	// Redirect std::cout to a file
+	#if defined(LOGTOFILE)
+		std::ofstream file("game.log");
+		std::streambuf* streamBuffer = std::cout.rdbuf();
+		std::cout.rdbuf( file.rdbuf() );
+	#else
+		StartConsole();
+	#endif
+	
 	CGameWindow myWindow( hInstance, "DemoFramework" );
 
 	MyGame myGame;
