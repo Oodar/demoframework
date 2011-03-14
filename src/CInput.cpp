@@ -117,6 +117,15 @@ void CInput::readMouseData( RAWINPUT* rawInput )
 		// Cast from unsigned short to short
 		m_usMouseWheelDelta = (short)rawInput->data.mouse.usButtonData; // Negative = scrolling down
 																		// Positive = scrolling up
+
+		if( m_usMouseWheelDelta < 0 )
+		{
+			LogMessage( "INPUT", "Mouse: Wheel scrolling down!" );
+		}
+		else
+		{
+			LogMessage( "INPUT", "Mouse: Wheel scrolling up!" );
+		}
 	}
 
 	#pragma endregion
