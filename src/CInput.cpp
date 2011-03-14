@@ -86,14 +86,43 @@ void CInput::readMouseData( RAWINPUT* rawInput )
 	long deltaX = rawInput->data.mouse.lLastX;
 	long deltaY = rawInput->data.mouse.lLastY;
 
-	std::stringstream mouseStr;
-	mouseStr.str("");
+	// Check mouse buttons and update member variable booleans
+	#pragma region Handling Mouse Buttons
 
-	mouseStr << "Mouse coords (x,y): ( " << deltaX << ", " << deltaY << " )";
+	if( rawInput->data.mouse.usButtonFlags & RI_MOUSE_LEFT_BUTTON_DOWN )
+	{
+		LogMessage( "INPUT", "Mouse: LMB Down!" );
+		m_bLMB = true;
+	}
+	else if( rawInput->data.mouse.usButtonFlags & RI_MOUSE_LEFT_BUTTON_UP )
+	{
+		LogMessage( "INPUT", "Mouse: LMB Up!" );
+		m_bRMB = true;
+	}
 
-	//LogMessage( "INPUT", mouseStr.str() );
+	if( rawInput->data.mouse.usButtonFlags & RI_MOUSE_RIGHT_BUTTON_DOWN )
+	{
+		LogMessage( "INPUT", "Mouse: RMB Down!" );
+		m_bRMB = true;
+	}
+	else if( rawInput->data.mouse.usButtonFlags & RI_MOUSE_RIGHT_BUTTON_UP )
+	{
+		LogMessage( "INPUT", "Mouse: RMB Up!" );
+		m_bRMB = false;
+	}
+
+	// Handle mouse wheel
+	if( rawInput->data.mouse.usButtonFlags & RI_MOUSE_WHEEL )
+	{
+		// Cast from unsigned short to short
+		m_usMouseWheelDelta = (short)rawInput->data.mouse.usButtonData; // Negative = scrolling down
+																		// Positive = scrolling up
+	}
+
+	#pragma endregion
 
 
+	
 
 }
 

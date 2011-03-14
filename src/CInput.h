@@ -26,5 +26,8 @@ private:
 	std::set<USHORT>	m_setCurrPressed;
 
 	POINT				m_guiCursorPos;
+	bool				m_bLMB;
+	bool				m_bRMB;
+	SHORT				m_usMouseWheelDelta;
 
 };
