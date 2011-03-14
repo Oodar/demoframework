@@ -12,7 +12,7 @@ public:
 	CInput::CInput();
 	CInput::~CInput();
 
-	void Update( LPARAM lParam );
+	void update( LPARAM lParam, HWND hWnd );
 
 private:
 
@@ -24,5 +24,7 @@ private:
 	RAWINPUTDEVICE		m_rID[2];
 
 	std::set<USHORT>	m_setCurrPressed;
+
+	POINT				m_guiCursorPos;
 
 };

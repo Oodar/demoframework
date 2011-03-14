@@ -45,7 +45,7 @@ void CInput::registerDevices()
 	}
 }
 
-void CInput::Update( LPARAM lParam )
+void CInput::update( LPARAM lParam, HWND hWnd )
 {
 	// Double check buffer size, it shouldn't be bigger than 40!
 	UINT tmp;
@@ -72,16 +72,35 @@ void CInput::Update( LPARAM lParam )
 			readKeyboardData( rawInput );
 
 	}
+
+
+	// The above raw input is useful for high-res mouse movement, but for GUI it is better to have
+	// the mouse coordinates relative to the window
+	GetCursorPos( &m_guiCursorPos );
+	ScreenToClient( hWnd, &m_guiCursorPos );
 }
 
 void CInput::readMouseData( RAWINPUT* rawInput )
 {
+	// Delta x/y for mouse coords
+	long deltaX = rawInput->data.mouse.lLastX;
+	long deltaY = rawInput->data.mouse.lLastY;
+
+	std::stringstream mouseStr;
+	mouseStr.str("");
+
+	mouseStr << "Mouse coords (x,y): ( " << deltaX << ", " << deltaY << " )";
+
+	//LogMessage( "INPUT", mouseStr.str() );
+
+
 
 }
 
 void CInput::readKeyboardData( RAWINPUT* rawInput )
 {
 	USHORT keyCode = rawInput->data.keyboard.VKey;
+
 	bool keyUp = rawInput->data.keyboard.Flags & RI_KEY_BREAK;
 
 	std::stringstream keyCodeStr;

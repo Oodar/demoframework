@@ -28,7 +28,7 @@ LRESULT CGameWindow::MsgProc( UINT msg, WPARAM wParam, LPARAM lParam )
 	case WM_INPUT:
 
 		// Process raw input here
-		m_input.Update( lParam );
+		m_input.update( lParam, m_hWnd );
 		break;
 
 	case WM_CREATE:
