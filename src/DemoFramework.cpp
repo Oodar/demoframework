@@ -7,8 +7,16 @@
 #include "CGameWindow.h"
 #include "MyGame.h"
 
+/* TODO
+*	1. Finish implementing the hash string for hashing event type strings
+*	2. Finish coding the event management
+*	3. Test out event management by hooking it up to input class
+*
+*
+*/
+
 // Turn this off to log to console
-// #define LOGTOFILE
+#define LOGTOFILE
 
 void StartConsole()
 {
