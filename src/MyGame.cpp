@@ -56,39 +56,19 @@ void MyGame::initGame( LPDIRECT3DDEVICE9 pDevice, HWND hWnd )
 
 	// Testing out hashing strings:
 	std::string hashString = "Event_Fire_Weapon";
-
-	size_t h(0);
-
-	for( int i = 0; i < hashString.length(); i++ )
-	{
-		unsigned highorder = hashString[i] & 0xf80000000;
-		h = h << 5;
-		h = h ^ ( highorder >> 27 );
-		h = h ^ (unsigned int)hashString[i];
-	}
-
 	std::stringstream finalHash;
 	finalHash.str("");
+	unsigned int hash = DJBHash( hashString );
 
-	finalHash << "Hashed: " << hashString << " to: " << h;
-
+	finalHash << "Hashed: " << hashString << " to: " << hash;
 	LogMessage( "EVENT", finalHash.str() );
 
 	hashString = "Event_Fire_Weapon_2";
+	hash = DJBHash( hashString );
 
-	h = 0;
-
-	for( int i = 0; i < hashString.length(); i++ )
-	{
-		unsigned highorder = hashString[i] & 0xf80000000;
-		h = h << 5;
-		h = h ^ ( highorder >> 27 );
-		h = h ^ (unsigned int)hashString[i];
-	}
 
 	finalHash.str("");
-	finalHash << "Hashed: " << hashString << " to: " << h;
-
+	finalHash << "Hashed: " << hashString << " to: " << hash;
 	LogMessage( "EVENT", finalHash.str() );
 
 }
