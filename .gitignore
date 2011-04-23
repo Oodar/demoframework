@@ -1,8 +1,6 @@
 ipch/
 Debug/
-*.sln
 *.sdf
-*.vcxproj
 *.filters
 *.user
 *.opensdf
