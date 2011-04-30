@@ -5,6 +5,7 @@
 #include "MyGame.h"
 #include "CHashedString.h"
 
+
 void MyGame::setupFontInterface()
 {
 	if( !m_pDevice )
@@ -56,10 +57,8 @@ void MyGame::initGame( LPDIRECT3DDEVICE9 pDevice, HWND hWnd )
 	// Testing out CGraphicsStats
 	m_stats.startTiming(); // Kick off frame rate timer
 
-	// Testing out hashing strings:
-	CHashedString fireWeaponEvent( "Fire_Weapon" );
-	CHashedString fireWeapon2Event( "Fire_Weapon2" );
-	CHashedString actorMoveEvent( "Actor_Move" );
+	// Set up singleton event manager
+	m_eventManager = CEventManager::getInstance();
 
 }
 

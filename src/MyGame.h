@@ -6,6 +6,7 @@
 #include "CInput.h"
 #include "Util.h"
 #include "CGraphicsStats.h"
+#include "CEventManager.h"
 
 class MyGame: public IGame
 {
@@ -23,5 +24,5 @@ class MyGame: public IGame
 	void onResetDevice();
 
 	CGraphicsStats	m_stats;
-
+	CEventManager*	m_eventManager;
 };
