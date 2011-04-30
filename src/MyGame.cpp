@@ -1,7 +1,9 @@
-#include "MyGame.h"
 #include <sstream>
 #include <iostream>
 #include <tchar.h> // required for _tcscpy
+
+#include "MyGame.h"
+#include "CHashedString.h"
 
 void MyGame::setupFontInterface()
 {
@@ -55,27 +57,15 @@ void MyGame::initGame( LPDIRECT3DDEVICE9 pDevice, HWND hWnd )
 	m_stats.startTiming(); // Kick off frame rate timer
 
 	// Testing out hashing strings:
-	std::string hashString = "Event_Fire_Weapon";
-	std::stringstream finalHash;
-	finalHash.str("");
-	unsigned int hash = DJBHash( hashString );
-
-	finalHash << "Hashed: " << hashString << " to: " << hash;
-	LogMessage( "EVENT", finalHash.str() );
-
-	hashString = "Event_Fire_Weapon_2";
-	hash = DJBHash( hashString );
-
-
-	finalHash.str("");
-	finalHash << "Hashed: " << hashString << " to: " << hash;
-	LogMessage( "EVENT", finalHash.str() );
+	CHashedString fireWeaponEvent( "Fire_Weapon" );
+	CHashedString fireWeapon2Event( "Fire_Weapon2" );
+	CHashedString actorMoveEvent( "Actor_Move" );
 
 }
 
 void MyGame::render()
 {
-	if( !SUCCEEDED( m_pDevice->Clear( 0, 0, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB( 255, 255, 255 ), 1.0f, 0 )))
+	if( !SUCCEEDED( m_pDevice->Clear( 0, 0, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB( 100, 180, 255 ), 1.0f, 0 )))
 	{
 		LogMessage( "GAME", "m_pDevice->Clear failed!");
 	}
