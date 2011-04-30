@@ -66,6 +66,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\CEventManager.cpp" />
     <ClCompile Include="src\CGameWindow.cpp" />
     <ClCompile Include="src\CGraphicsStats.cpp" />
     <ClCompile Include="src\CHashedString.cpp" />
@@ -80,7 +81,9 @@
     <ClInclude Include="src\CHashedString.h" />
     <ClInclude Include="src\CInput.h" />
     <ClInclude Include="src\CTimer.h" />
+    <ClInclude Include="src\CEventManager.h" />
     <ClInclude Include="src\IEvent.h" />
+    <ClInclude Include="src\IEventListener.h" />
     <ClInclude Include="src\IGame.h" />
     <ClInclude Include="src\MyGame.h" />
     <ClInclude Include="src\Util.h" />
