@@ -2,7 +2,6 @@
 
 #include "IEvent.h"
 
-
 class IEventListener
 {
 	// Returns true signal consumption of event

@@ -24,5 +24,5 @@ class MyGame: public IGame
 	void onResetDevice();
 
 	CGraphicsStats	m_stats;
-	CEventManager*	m_eventManager;
+	CEventManager*	m_pEventManager;
 };

@@ -58,7 +58,7 @@ void MyGame::initGame( LPDIRECT3DDEVICE9 pDevice, HWND hWnd )
 	m_stats.startTiming(); // Kick off frame rate timer
 
 	// Set up singleton event manager
-	m_eventManager = CEventManager::getInstance();
+	m_pEventManager = CEventManager::getInstance();
 
 }
 
@@ -107,6 +107,8 @@ void MyGame::onResetDevice()
 void MyGame::endGame()
 {
 	LogMessage( "GAME", "MyGame::endGame called!" );
+
+	delete m_pEventManager;
 
 	// Release COM interfaces here
 	if( m_pFont )

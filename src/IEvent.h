@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+
 #include "CHashedString.h"
 
 typedef CHashedString EventType;
