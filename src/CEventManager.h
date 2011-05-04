@@ -8,9 +8,13 @@
 #include "CTimer.h"
 
 typedef boost::shared_ptr< IEventListener > EventListenerPtr;
-typedef boost::shared_ptr< IEvent > EventPtr;
-typedef std::list< EventPtr > EventQueue;
-typedef std::map< EventType, std::vector< EventListenerPtr > > EventListenerMap;
+typedef boost::shared_ptr< IEvent >			EventPtr;
+typedef std::list< EventPtr >				EventQueue;
+
+// Holy map-related typedefs, batman!
+typedef std::map< EventType, std::vector< EventListenerPtr > >				EventListenerMap;
+typedef std::map< EventType, std::vector< EventListenerPtr > >::iterator	EventListenerMapIterator;
+typedef std::pair< EventListenerMapIterator, bool >							EventListenerInsertResult;
 
 class CEventManager
 {
@@ -39,5 +43,6 @@ private:
 
 // TODO
 // Implement functions using the EventListenerMap
+// Need comparison operator for keys due to std::maps internal implementation
 // Going to need typedefs for the iterator/const_iterators returned
 // by std::map find functions, etc, to make the code more readable
