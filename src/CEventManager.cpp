@@ -50,7 +50,7 @@ bool CEventManager::queueEvent( EventPtr pEvent )
 			
 
 	// Push event onto back of queue
-	m_qEventQueues[ m_iActiveQueue ].push_back( pEvent );
+	m_EventQueues[ m_iActiveQueue ].push_back( pEvent );
 
 
 	return false;
@@ -69,8 +69,8 @@ void CEventManager::update( float timeAllowed )
 	std::stringstream eventString;
 	eventString.str("");
 
-	for( EventQueue::iterator it = m_qEventQueues[ m_iActiveQueue ].begin(),
-			itEnd = m_qEventQueues[ m_iActiveQueue ].end(); it != itEnd; it++ )
+	for( EventQueue::iterator it = m_EventQueues[ m_iActiveQueue ].begin(),
+			itEnd = m_EventQueues[ m_iActiveQueue ].end(); it != itEnd; it++ )
 	{
 		// Break the loop should we use up too much time
 		if( accumulatedTime > timeAllowed )
