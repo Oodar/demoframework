@@ -72,6 +72,7 @@
     <ClCompile Include="src\CGraphicsStats.cpp" />
     <ClCompile Include="src\CHashedString.cpp" />
     <ClCompile Include="src\CInput.cpp" />
+    <ClCompile Include="src\CSnooperEvent.cpp" />
     <ClCompile Include="src\CTimer.cpp" />
     <ClCompile Include="src\DemoFramework.cpp" />
     <ClCompile Include="src\MyGame.cpp" />
@@ -82,6 +83,7 @@
     <ClInclude Include="src\CGraphicsStats.h" />
     <ClInclude Include="src\CHashedString.h" />
     <ClInclude Include="src\CInput.h" />
+    <ClInclude Include="src\CSnooperEvent.h" />
     <ClInclude Include="src\CTimer.h" />
     <ClInclude Include="src\CEventManager.h" />
     <ClInclude Include="src\IEvent.h" />
