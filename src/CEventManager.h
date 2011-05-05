@@ -7,13 +7,12 @@
 #include "IEventListener.h"
 #include "CTimer.h"
 
-typedef boost::shared_ptr< IEventListener > EventListenerPtr;
-typedef boost::shared_ptr< IEvent >			EventPtr;
 typedef std::list< EventPtr >				EventQueue;
+typedef std::vector< EventListenerPtr >		EventListenerTable;
 
 // Holy map-related typedefs, batman!
 typedef std::map< EventType, std::vector< EventListenerPtr > >				EventListenerMap;
-typedef std::pair< EventType, std::vector< EventListenerPtr > >				MapInsertPair;
+typedef std::pair< EventType, EventListenerTable >							MapInsertPair;
 typedef std::pair< EventListenerMap::iterator, bool >						MapInsertResult;
 
 class CEventManager
@@ -42,6 +41,7 @@ private:
 };
 
 // TODO
+// Create a class that implements IEventListener and have it snoop all events for debugging purposes
 // Implement functions using the EventListenerMap
 // Going to need typedefs for the iterator/const_iterators returned
 // by std::map find functions, etc, to make the code more readable

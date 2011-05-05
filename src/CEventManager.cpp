@@ -37,7 +37,18 @@ bool CEventManager::addListener( EventListenerPtr pListener, EventPtr pEvent )
 	{
 		// No event of this type listed
 		// Need to create a pair to push into the map
+		MapInsertResult insertResult = m_EventListenerMap.insert( MapInsertPair( pEvent->getType(), EventListenerTable() ) );
 
+		if( (insertResult.second ) )
+		{
+			// Successfully inserted
+			LogMessage( "EVENT", "Successfully inserted Key/Value pair" );
+		}
+		else
+		{
+			// Something went wrong here
+			LogMessage( "EVENT", "Key/Value pair already existed in listener map" );
+		}
 																	
 	}
 	else
