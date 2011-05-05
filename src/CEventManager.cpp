@@ -20,10 +20,10 @@ CEventManager* CEventManager::getInstance()
 
 CEventManager::CEventManager()
 {
-	// Do nothing
+	m_iActiveQueue = 0;
 }
 
-bool CEventManager::addListener( EventListenerPtr pListener, EventPtr pEvent )
+bool CEventManager::addListener( EventListenerPtr pListener, EventType eventType )
 {
 	// Check EventType is valid
 	// Check that entry doesn't already exist
@@ -31,13 +31,23 @@ bool CEventManager::addListener( EventListenerPtr pListener, EventPtr pEvent )
 		// 2. If it doesn't exist, create an entry
 		// 3. If it does exist, add the entry into the map
 
-	EventListenerMap::iterator it = m_EventListenerMap.find( pEvent->getType() );
+	std::stringstream listenerString;
+	listenerString.str("");
+
+	listenerString << "Attempting to add listener for type: " << eventType.getHash() << " full name: " << eventType.getOriginalString();
+
+	LogMessage( "EVENT", listenerString.str() );
+
+	EventListenerMap::iterator it = m_EventListenerMap.find( eventType );
 
 	if( it == m_EventListenerMap.end() )
 	{
 		// No event of this type listed
 		// Need to create a pair to push into the map
-		MapInsertResult insertResult = m_EventListenerMap.insert( MapInsertPair( pEvent->getType(), EventListenerTable() ) );
+		EventListenerTable newTable;
+		newTable.push_back( pListener );
+
+		MapInsertResult insertResult = m_EventListenerMap.insert( MapInsertPair( eventType, newTable ) );
 
 		if( (insertResult.second ) )
 		{
@@ -107,13 +117,38 @@ void CEventManager::update( float timeAllowed )
 		}
 
 		eventString << "Type: " << (*it)->getType().getHash() << ", " << (*it)->getType().getOriginalString();
+		LogMessage( "EVENT", eventString.str() );
 
 		// Process events here
+		EventListenerMap::iterator findResult = m_EventListenerMap.find( (*it)->getType() );
 
-		accumulatedTime += m_Timer.lap();
+		std::cout << "findResult, Hash: " << (*findResult).first.getHash();
+		std::cout << " Listener table size: " << (*findResult).second.size() << std::endl;
+
+		if( findResult == m_EventListenerMap.end() )
+		{
+			// Unable to find an entry for this type
+			LogMessage( "EVENT", "Unable to find entry for type" );
+		}
+		else
+		{
+			// Call everyone that was interested in this event type
+			for( EventListenerTable::iterator it2 = (*findResult).second.begin(), it2End = (*findResult).second.end();
+						it2 != it2End; it2++ )
+			{
+				LogMessage( "EVENT", "Calling HandleEvent" );
+				(*it2)->HandleEvent( (*it) );
+			}
+		}
+
+
+		eventString.str("");
+		float addedTime = m_Timer.lap(); // Don't allocate memory in this loop, fix this when not debugging
+		accumulatedTime += addedTime;
+
+		eventString << "Time used to process this event: " << addedTime;
+		LogMessage( "EVENT", eventString.str() );
 	}
-
-	LogMessage( "EVENT", eventString.str() );
 
 	// Need to switch queues here, add any unprocessed events to the start of the
 	// fresh queue

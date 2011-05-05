@@ -20,7 +20,7 @@ class CEventManager
 public:
 
 	static CEventManager* getInstance();
-	bool addListener( EventListenerPtr pListener, EventPtr pEvent );
+	bool addListener( EventListenerPtr pListener, EventType eventType );
 	bool queueEvent( EventPtr pEvent );
 	void update( float timeAllowed );
 
