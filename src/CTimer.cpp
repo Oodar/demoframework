@@ -29,11 +29,11 @@ void CTimer::startTiming()
 	// Remember when we started
 	startCount = prevCount;
 	
-	std::stringstream counter;
-	counter.str("");
-	counter << "Starting time: " << prevCount;
+	//std::stringstream counter;
+	//counter.str("");
+	//counter << "Starting time: " << prevCount;
 
-	LogMessage( "TIME", counter.str() );
+	//LogMessage( "TIME", counter.str() );
 }
 
 float CTimer::timeToNow()
