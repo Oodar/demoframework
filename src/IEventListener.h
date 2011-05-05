@@ -7,6 +7,8 @@
 
 class IEventListener
 {
+public:
+
 	// Returns true signal consumption of event
 	virtual bool HandleEvent( EventPtr pEvent ) = 0;
 };
