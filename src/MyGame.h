@@ -7,6 +7,7 @@
 #include "Util.h"
 #include "CGraphicsStats.h"
 #include "CEventManager.h"
+#include "CEventSnooper.h"
 
 class MyGame: public IGame
 {

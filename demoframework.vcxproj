@@ -67,6 +67,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\CEventManager.cpp" />
+    <ClCompile Include="src\CEventSnooper.cpp" />
     <ClCompile Include="src\CGameWindow.cpp" />
     <ClCompile Include="src\CGraphicsStats.cpp" />
     <ClCompile Include="src\CHashedString.cpp" />
@@ -76,6 +77,7 @@
     <ClCompile Include="src\MyGame.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\CEventSnooper.h" />
     <ClInclude Include="src\CGameWindow.h" />
     <ClInclude Include="src\CGraphicsStats.h" />
     <ClInclude Include="src\CHashedString.h" />
