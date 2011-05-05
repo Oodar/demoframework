@@ -60,6 +60,14 @@ void MyGame::initGame( LPDIRECT3DDEVICE9 pDevice, HWND hWnd )
 	// Set up singleton event manager
 	m_pEventManager = CEventManager::getInstance();
 
+	// Testing out EventListener
+	EventListenerPtr pEventSnooper( new CEventSnooper( "output.txt" ) );
+	EventPtr pSnooperEvent( new CSnooperEvent() );
+
+	// TODO:
+	m_pEventManager->addListener( pEventSnooper, pSnooperEvent->getType() );
+	m_pEventManager->queueEvent( pSnooperEvent );
+
 }
 
 void MyGame::render()
@@ -92,6 +100,7 @@ void MyGame::render()
 
 void MyGame::update( float dT )
 {
+	m_pEventManager->update( 100.0f );
 }
 
 void MyGame::onLostDevice()
