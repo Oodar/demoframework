@@ -61,7 +61,7 @@ void MyGame::initGame( LPDIRECT3DDEVICE9 pDevice, HWND hWnd )
 	m_pEventManager = CEventManager::getInstance();
 
 	// Testing out EventListener
-	EventListenerPtr pEventSnooper( new CEventSnooper( "output.txt" ) );
+	EventListenerPtr pEventSnooper( new CEventSnooper( "output.log" ) );
 	EventPtr pSnooperEvent( new CSnooperEvent() );
 
 	// TODO:
