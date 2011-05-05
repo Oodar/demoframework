@@ -30,6 +30,23 @@ bool CEventManager::addListener( EventListenerPtr pListener, EventPtr pEvent )
 		// 1. Check that pEvent->getType() has an entry in the map of types to listeners
 		// 2. If it doesn't exist, create an entry
 		// 3. If it does exist, add the entry into the map
+
+	EventListenerMap::iterator it = m_EventListenerMap.find( pEvent->getType() );
+
+	if( it == m_EventListenerMap.end() )
+	{
+		// No event of this type listed
+		// Need to create a pair to push into the map
+
+																	
+	}
+	else
+	{
+		// Event listed, it points to the key, add the listener
+		(*it).second.push_back( pListener );
+	}
+
+
 		
 	// Return condition:
 		// True: Successfully added the listener to the type's mapping
