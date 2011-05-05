@@ -25,6 +25,14 @@ bool CHashedString::operator< ( CHashedString const &rhs ) const
 	return result;
 }
 
+bool CHashedString::operator==( CHashedString const &rhs ) const
+{
+	bool result = false;
+	result = ( getHash() == rhs.getHash() );
+
+	return result;
+}
+
 unsigned int CHashedString::getHash() const
 {
 	return m_iHash;

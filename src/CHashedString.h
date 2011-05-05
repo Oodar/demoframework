@@ -12,6 +12,7 @@ public:
 	std::string getOriginalString();
 
 	bool operator< ( CHashedString const & rhs ) const;
+	bool operator==( CHashedString const & rhs ) const;
 
 private:
 
