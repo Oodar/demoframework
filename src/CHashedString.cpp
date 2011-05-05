@@ -17,7 +17,15 @@ CHashedString::CHashedString( std::string sOriginalString )
 
 }
 
-unsigned int CHashedString::getHash()
+bool CHashedString::operator< ( CHashedString const &rhs ) const
+{
+	bool result = false;
+	result = getHash() < rhs.getHash();
+
+	return result;
+}
+
+unsigned int CHashedString::getHash() const
 {
 	return m_iHash;
 }

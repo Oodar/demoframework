@@ -8,8 +8,10 @@ public:
 
 	CHashedString( std::string sOriginalString );
 
-	unsigned int getHash();
+	unsigned int getHash() const;
 	std::string getOriginalString();
+
+	bool operator< ( CHashedString const & rhs ) const;
 
 private:
 
