@@ -96,6 +96,8 @@ bool CEventManager::queueEvent( EventPtr pEvent )
 
 void CEventManager::update( float timeAllowed )
 {
+	// TODO: This doesn't actually remove queued events, which it should do if they are processed.
+
 	// timeAllowed: Amount of time allocated to process events in milliseconds
 	// Process as many events as possible within timeAllowed.
 	
