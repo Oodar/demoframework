@@ -110,7 +110,7 @@ void CEventManager::update( float timeAllowed )
 	eventString.str("");
 
 	for( EventQueue::iterator it = m_EventQueues[ m_iActiveQueue ].begin(),
-			itEnd = m_EventQueues[ m_iActiveQueue ].end(); it != itEnd; it++ )
+			itEnd = m_EventQueues[ m_iActiveQueue ].end(); it != itEnd; )
 	{
 		// Break the loop should we use up too much time
 		if( accumulatedTime > timeAllowed )
@@ -143,6 +143,8 @@ void CEventManager::update( float timeAllowed )
 			}
 		}
 
+		// Remove processed event
+		m_EventQueues[ m_iActiveQueue ].erase( it++ );
 
 		eventString.str("");
 		float addedTime = m_Timer.lap(); // Don't allocate memory in this loop, fix this when not debugging
